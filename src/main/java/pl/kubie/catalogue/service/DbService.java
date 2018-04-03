@@ -18,8 +18,20 @@ public class DbService {
         return repository.findAll();
     }
 
-    public void saveItem(Item item) {
-        repository.save(item);
+    public List<Item> getAllItemsByName(String name) {
+        return repository.findByNameContains(name);
+    }
+
+    public List<Item> getAllItemsByMark(Long mark) {
+        return repository.findByAverageMark(mark);
+    }
+
+    public Item getOneItem(Long id) {
+        return repository.findById(id);
+    }
+
+    public Item saveItem(Item item) {
+        return repository.save(item);
     }
 
     public void deleteItem(Long itemId) {

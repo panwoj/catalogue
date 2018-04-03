@@ -10,8 +10,14 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     @Override
     List<Item> findAll();
 
+    Item findById(Long id);
+
     @Override
     Item save(Item item);
 
     void deleteById(Long itemId);
+
+    List<Item> findByNameContains(String name);
+
+    List<Item> findByAverageMark(Long mark);
 }
