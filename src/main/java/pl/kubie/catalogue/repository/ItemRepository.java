@@ -12,4 +12,6 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
 
     @Override
     Item save(Item item);
+
+    void deleteById(Long itemId);
 }

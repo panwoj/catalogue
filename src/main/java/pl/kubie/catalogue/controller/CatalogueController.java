@@ -18,14 +18,24 @@ public class CatalogueController {
     @Autowired
     private DbService dbService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "items")
+    @RequestMapping(method = RequestMethod.GET, value = "/items")
     public List<Item> getItems() {
         return dbService.getAllItems();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "items")
+    @RequestMapping(method = RequestMethod.POST, value = "/items")
     public void addItem(@RequestParam String name) {
         dbService.saveItem(new Item(name, (long) 0, LocalDate.now()));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/items/{itemId}")
+    public void deleteItem(@PathVariable Long itemId) {
+        dbService.deleteItem(itemId);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/items")
+    public void editItem() {
+
     }
 
 }
